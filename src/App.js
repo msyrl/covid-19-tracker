@@ -4,16 +4,18 @@ import {
   CardContent,
   FormControl,
   MenuItem,
-  Select,
+  Select
 } from "@material-ui/core";
 import "./App.css";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
+import Table from "./Table";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   const onCountryChange = (event) => {
     const countryCode = event.target.value;
@@ -46,6 +48,9 @@ function App() {
             value: country.countryInfo.iso2,
           }));
 
+          const sortedData = data.sort((a, b) => (a.cases > b.cases ? -1 : 1));
+
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -96,8 +101,8 @@ function App() {
       </div>
       <Card className="app__right">
         <CardContent>
-          {/* Table */}
           <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
           {/* Graph */}
           <h3>Worldwide new cases</h3>
         </CardContent>
