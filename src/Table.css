@@ -1,5 +1,6 @@
 .table {
     margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     overflow-y: scroll;
     height: 400px;
     color: #6a5d5d;
