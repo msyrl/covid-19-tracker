@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import './LineGraph.css';
 
-function LineGraph({ casesType = "cases" }) {
+function LineGraph({ casesType }) {
   const [data, setData] = useState({});
 
   const buildChartData = (data, casesType) => {
